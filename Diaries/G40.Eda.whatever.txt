@@ -1,0 +1,8 @@
+15/02- 15
+Today we had our first meeting with Henrik, where we discussed how to structure and plan our project. Our project will be making the famous board game GO. We decided to do a design before starting with an actual code, in order to prevent any confusion, and being fully aware and structured when coding. 
+
+To get a better understaning, I did some research and tried playing Go. Tomorrow we will meet up and start on our design.
+
+16/02-15
+Besides from making a skech on our design, we learned how to use github properly, and did some further planning on our project. 
+We have already done a schedule for the coming two weeks, and we will meet up tomorrow and continue on the design part. 
