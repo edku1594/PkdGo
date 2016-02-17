@@ -1,0 +1,11 @@
+cd PKDGO
+git status 
+om inte commited- 
+git add "namn" 
+git commit -m "meddelande"
+git pull (ändringar)
+git push 
+
+
+git stash (återställ och spara ändrignar)
+git stash pop (återställ stashade)
