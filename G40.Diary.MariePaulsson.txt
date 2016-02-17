@@ -52,7 +52,7 @@ Decided to meet 17/2 to do a design and a new meeting at 19/2.
 -------------------------------------------------------------
 
 when: 17/2-16
-How long: 12:20- ongoing
-what did i do:
-ajkdfhajf
+How long: 12:20-16
+what did i do: We learned basics on how to use GitHub, we came up with the fundamental desgin plan for our Go project with some overview/help from our supervisor.
+
 -------------------------------------------------------------
