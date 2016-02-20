@@ -11,13 +11,14 @@ type Playfield = [[Empty]]
 type Empty = Maybe Stone
 data Stone = Stone SColor
 data SColor = White | Black 
-[
-[e, e, e, e, e]
-[e, e, e, e, e]
-[e, e, e, e, e]
-[e, e, e, e, e]
-[e, e, e, e, e]
-]
+type Pos = (Int,Int)
+e :: Empty
+initiateBoard :: Playfield
+initiateBoard = [[e, e, e, e, e]
+				[e, e, e, e, e]
+				[e, e, e, e, e]
+				[e, e, e, e, e]
+				[e, e, e, e, e]]
 -}
 
 {- Ex.2
