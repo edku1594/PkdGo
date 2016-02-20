@@ -59,10 +59,11 @@ what did i do: We learned basics on how to use GitHub, we came up with a fundame
 
 when: 18/2-16 in 2241
 How long: 15:15-18
-what did i do: We continued planning 
+what did i do: We continued to plan our design and discussed different types of scenarios, groups and liberties in Go. Did just a little bit of coding.
 
 -------------------------------------------------------------
 
-when: 19/2-16 in 2240, and in the hal in house 2
-How long: 11-12 (meeting with our supervisor) 12-
-what did i do: 
+when: 19/2-16 in 2240,
+How long: 11-13:40
+what did i do: Had a meeting with our supervisor (which i was late to) and after we struggled with how to create list of lists, searched around on the internet and looked on
+some chess code to get some ideas. Did just a little bit of coding.
