@@ -1,3 +1,4 @@
+
 16/02- 15
 Today we had our first meeting with Henrik, where we discussed how to structure and plan our project. Our project will be making the famous board game GO. We decided to do a design before starting with an actual code, in order to prevent any confusion, and being fully aware and structured when coding. 
 
@@ -9,3 +10,12 @@ We have already done a schedule for the coming two weeks, and we will meet up to
 
 18/02-15
 Today we met up to finish the design part. We came up with the idea of dividing the design into two parts. First part is the game board (array/matrix), and the second part is the actual game with it's rules, etc. We made a skech on a tree for a top-down design, that I lately remade and added few details on. We also started looking at different ways of doing an array/matrix, that we will continue working on tomorrow. Tomorrow we'll also have a second meeting with Henrik. 
+
+
+19/02-15 
+Today in the meeting we were discussiong how to do a proper playboard. We decided to do lists of lists, and after the meeting we contiuned working on it. 
+
+22/02-15
+I unfortunently missed the meeting today, but my group partners summirized it for me. We finished our playboard and contiuned according our plan. Right now we are working on spotting "coordinates"/spots for the placing of the stones. 
+
+ 
