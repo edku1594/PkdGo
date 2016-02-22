@@ -70,6 +70,7 @@ some chess code to get some ideas. Did just a little bit of coding.
 
 ---------------------------------------------------------------
 
-When: 22/2-16
-How long: 13:25- ongoing
-what did i do: 
+When: 22/2-16 in 2240
+How long: 13:25 - 17:16
+what did i do: Had a short short meeting with our supervisor who helped us with the function initialBoard. After he left we coded getCell and oppositeCell. We didn't finish playMove and isEmpty.
+I later put some comments on the code at lines: 22, 24, 37 and 38.
