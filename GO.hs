@@ -1,25 +1,20 @@
 import Control.Exception
 import Prelude hiding(catch)
 import Control.Monad
+import Test.HUnit -- test framework
 
 import Data.Array
 import Data.List
 
 -----------------------------------------------------
-{- Ex.1
-type Playfield = [[Empty]]
-type Empty = Maybe Stone
-data Stone = Stone SColor
-data SColor = White | Black 
+-- Ex.1
+-- ****************** data types ********************
+data Stone = Black | White
+data Cell = Empty | Stone deriving (Show)
+
+type Playfield = [[Cell]]
 type Pos = (Int,Int)
-e :: Empty
-initiateBoard :: Playfield
-initiateBoard = [[e, e, e, e, e]
-				[e, e, e, e, e]
-				[e, e, e, e, e]
-				[e, e, e, e, e]
-				[e, e, e, e, e]]
--}
+
 
 {- Ex.2
 type Kolumn = Int
