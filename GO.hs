@@ -19,9 +19,14 @@ type Pos = (Int,Int)
 -- show Black = "X"					( Inget att tänka på nu )
 -- show White = "O"
 
--- initialBoard makes a nxn board
+-- initialBoard makes a nxn board (n lists with n elements each within a list)
 initialBoard :: Int -> Cell -> Playfield
-initialBoard n cell = replicate n (replicate n cell)
+initialBoard n cell = replicate n (replicate n cell) -- blir bara en lång rad (inte kolumner å rader)
+
+oppositeCell :: Cell -> Cell
+oppositeCell Stone = Empty
+oppositeCell Empty = Stone
+
 
 -- kollar om cellen är tom?
 -- isEmpty :: Playfield -> Pos -> Bool
@@ -29,11 +34,16 @@ initialBoard n cell = replicate n (replicate n cell)
 
 -- tar fram vad som finns i den positionen
 getCell :: Playfield -> Pos -> Cell
-getCell board (kolumn,rad) = board!!kolumn!!rad
+getCell board (kolumn,rad) = board!!kolumn!!rad -- (kolumn = vilken lista, rad = n:te elementet i listan)
+-- Ex: [[0,1],[2,3],[4,5]]!!1!!1 -> 3
+
 
 -- playStone ska sätta ut en sten (ändrar Empty till Stone på den pos)
--- playStone :: Pos -> Cell -> Cell
+-- playStone :: Pos -> Cell
+-- playStone (kolumn,rad) = playStone' 
 
+-- playStone' :: Playfield -> Pos -> Cell -> Cell
+-- playStone' board (kolumn,rad) 
 --}
 
 {- Ex.2
