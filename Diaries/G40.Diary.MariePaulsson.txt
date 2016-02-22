@@ -67,3 +67,9 @@ when: 19/2-16 in 2240,
 How long: 11-13:40
 what did i do: Had a meeting with our supervisor (which i was late to) and after we struggled with how to create list of lists, searched around on the internet and looked on
 some chess code to get some ideas. Did just a little bit of coding.
+
+---------------------------------------------------------------
+
+When: 22/2-16
+How long: 13:25- ongoing
+what did i do: 
