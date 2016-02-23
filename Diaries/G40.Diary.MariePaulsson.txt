@@ -71,6 +71,13 @@ some chess code to get some ideas. Did just a little bit of coding.
 ---------------------------------------------------------------
 
 When: 22/2-16 in 2240
-How long: 13:25 - 17:16, 17:45 - 18:
+How long: 13:25 - 17:16, 17:45 - 18:40 (on the train)
 what did i do: Had a short short meeting with our supervisor who helped us with the function initialBoard. After he left we coded getCell and oppositeCell. We didn't finish playMove and isEmpty.
 Later when i was on the train to Stockholm i put some comments on the code at lines: 22, 24, 37 and 38. I deleted 3 files (Dairy, GO project and untitled) because they were unnecessary and added GoDocumentation to our github.
+
+----------------------------------------------------------------
+When: 23/2-16 in 2226
+How long: 13:30 - 17:15 & 17:45-18:40 (on the train) & 1h at Jeppes.
+What did i do: We fixed the funtion isEmpty (we needed to add deriving Eq at line 13 for isEmpty to work which took some time to notice) and Eda worked on playStone.
+I'm working on replaceCell, trying to figure out how to replace an element in a list of lists with a new value. Can't figure out how to apply take and drop on list of lists, so that it doesn't remove the whole n:th list in list of lists 
+but just the n:th element in that list.
