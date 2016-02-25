@@ -92,5 +92,5 @@ What did i do: I tried to write replaceList, we summoned our supervisor who help
 -----------------------------------------------------------------
 
 When: 25/2-16
-How long: 12:00-
-What did i do: OMG I JUST FIXED replaceList (12:25) !!!!!!!
+How long: 12:00-15:20 in foobar, 17:20-18:00
+What did i do: I was working alone for 1,5h and thought i fixed replaceCell but it was wrong and got stuck. Later we summoned our supervisor who helped us and now on the train i fixed the function!!
