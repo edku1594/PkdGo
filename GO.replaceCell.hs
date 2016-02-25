@@ -83,6 +83,12 @@ replaceElement board (lista,elementet) c =
 -- playStone' :: Playfield -> Pos -> Cell -> Cell
 -- playStone' board (kolumn,rad) 
 
+replaceEl :: [a] -> Int -> a -> [a]
+replaceEl xs i x = (take i xs) ++ (x : (drop (i+1) xs))
+
+replace :: [[a]] -> (Int, Int) -> a -> [[a]]
+replace xs (y, x) s = replaceEl xs y (replaceEl (xs!!y) x s)
+
 
 {- Ex.2
 type Kolumn = Int
