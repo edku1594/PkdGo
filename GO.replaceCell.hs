@@ -66,9 +66,10 @@ replaceList board (lista,elementet) c re =
 	if and [lista >= 0, lista < length board]
 	then take lista board ++ (re: (drop (lista+1) board))
 	else board
--- Ex: replaceCell [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (_,_) Stone (replaceElement [Empty,Empty,Empty] (_,_) Stone) -> [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]]
---	   replaceCell [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (_,_) Stone (replaceElement [Empty,Empty,Empty] (_,_) Stone) -> [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]]
-
+-- Ex: replaceList [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (_,_) Stone (replaceElement [Empty,Empty,Empty] (_,_) Stone) -> [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]]
+--	   replaceList [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (_,_) Stone (replaceElement [Empty,Empty,Empty] (_,_) Stone) -> [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]]
+ab = replaceList [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (1,0) Stone (replaceElement [Empty,Empty,Empty] (1,0) Stone)
+ac = replaceList [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (1,0) Stone [Stone,Empty,Empty]
 -- replaceElement är i princip vad replaceCell ska göra.
 replaceElement :: [Cell] -> Pos -> Cell -> [Cell]
 replaceElement board (lista,elementet) c = 
