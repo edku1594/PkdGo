@@ -60,30 +60,16 @@ getCell board (kolumn,rad) = board!!kolumn!!rad -- (kolumn = vilken lista, rad =
 -- playStone :: Playfield -> Pos -> [Cell] -> Playfield
 -- playStone board (kolumn,rad) sten = if getCell board (kolumn,rad) == Empty then (replaceCell board (kolumn,rad) sten) else board
 
--- ska göra det playStone ska göra.. typ
-replaceList :: Playfield -> Pos -> Cell -> [Cell] -> Playfield
-replaceList board (lista,elementet) c (replaceElement board (lista,elementet) c) =
-	if and [lista >= 0, lista < length board]
-	then take lista board ++ ((replaceElement board (lista,elementet) c): (drop (lista+1) board))
+-- replaceCell byter ut ett element på Pos 
+-- replaceCell :: [a] -> Pos -> a -> [a]
+replaceCell board (xlist,yelem) c  = replaceCell' board xlist (replaceCell' (board!!xlist) yelem c)
+
+-- replaceCell' (auxiliary funktion) gör allt jobb åt replaceCell
+replaceCell' :: [a] -> Int -> a -> [a]
+replaceCell' board i c = 
+	if and [i >= 0, i < length board]		--getCell board (lista,elementet) == Empty måste vara med!
+	then take i board ++ (c: (drop (i+1) board))
 	else board
--- Ex: replaceList [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (_,_) Stone (replaceElement [Empty,Empty,Empty] (_,_) Stone) -> [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]]
---	   replaceList [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (_,_) Stone (replaceElement [Empty,Empty,Empty] (_,_) Stone) -> [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]]
-test1 = replaceList [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (1,0) Stone (replaceElement [Empty,Empty,Empty] (1,0) Stone)
-test2 = replaceList [[Empty,Empty,Empty],[Empty,Empty,Empty],[Empty,Empty,Empty]] (1,0) Stone [Stone,Empty,Empty]
-
--- replaceElement är i princip vad replaceCell ska göra.
-replaceElement :: [Cell] -> Pos -> Cell -> [Cell]
-replaceElement board (lista,elementet) c = 
-	if and [elementet >= 0, elementet < length board] --getCell board (lista,elementet) == Empty måste vara med!
-	then take elementet board ++ (c: (drop (elementet+1) board))
-	else board
--- Ex: replaceElement [Empty,Empty,Empty] (_,0) Stone -> [Stone,Empty,Empty]
---	   replaceElement [Empty,Empty,Empty] (_,2) Stone -> [Empty,Empty,Stone]
---	   replaceElement [Empty,Empty,Empty] (_,3) Stone -> [Empty,Empty,Empty]
-
-
--- playStone' :: Playfield -> Pos -> Cell -> Cell
--- playStone' board (kolumn,rad) 
 
 
 {- Ex.2
