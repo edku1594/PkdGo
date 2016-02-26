@@ -13,7 +13,7 @@ data Stone = Black | White deriving (Eq, Show)
 data Cell = Empty | Stone deriving (Eq, Show)
 data Player = A | B
 
-type Playfield = [[Cell]]
+type Playfield = [[Cell]] 
 type Pos = (Int,Int)
 
 -- instance Show Stone where     
@@ -57,11 +57,20 @@ getCell board (kolumn,rad) = board!!kolumn!!rad -- (kolumn = vilken lista, rad =
 
 
 -- playStone ska sätta ut en sten (ändrar Empty till Stone på den pos)
--- playStone :: Playfield -> Pos -> [Cell] -> Playfield
--- playStone board (kolumn,rad) sten = if getCell board (kolumn,rad) == Empty then (replaceCell board (kolumn,rad) sten) else board
+playStone :: Playfield -> Pos -> Cell -> IO Playfield
+playStone board (xlist,yelem) c = 
+		if isEmpty board (xlist,yelem) == True then do
+			putStrLn "Do you want make this move yes/no?" 
+			yes<-getLine 
+			if (yes=="yes") then replaceCell board (xlist,yelem) c else do putStrLn "make another move" 
+			playStone board (xlist,yelem) c 
+		else do
+			putStrLn "Stone. Invalid Move" 
+			playStone board (xlist,yelem) c
+
 
 -- replaceCell byter ut ett element på Pos 
--- replaceCell :: [a] -> Pos -> a -> [a]
+--replaceCell :: [a] -> Pos -> a -> [a]
 replaceCell board (xlist,yelem) c  = replaceCell' board xlist (replaceCell' (board!!xlist) yelem c)
 
 -- replaceCell' (auxiliary funktion) gör allt jobb åt replaceCell
