@@ -18,4 +18,15 @@ Today in the meeting we were discussiong how to do a proper playboard. We decide
 22/02-15
 I unfortunently missed the meeting today, but my group partners summirized it for me. We finished our playboard and contiuned according our plan. Right now we are working on spotting "coordinates"/spots for the placing of the stones. 
 
+23/02-15 
+Today we focused mostly on the two functions IsEmpty and PlayStone. After finishing the codes, we started on designing the replaceing part, and did some coding on it but didn't come so far. So that will be the goal for tomorrow. 
+
+24/02-15
+Continuing on the replacing functions, we unfortunently couldn't finish them today. We tried different ways, and now we've done a little bit on the coding, and will contiune working on it today.  
+
+25/02-15
+In the end of the day we finally fixed the replace functions and can now carry on with the second part of the design, which is the actual game itself.
+
+
+
  
