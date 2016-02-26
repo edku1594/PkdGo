@@ -1,0 +1,71 @@
+						Go Project Diary
+						  Joel Ramstedt
+
+16 February 2016
+----------------
+1 hour.
+We had our first meeting with our supervisor, Henrik. We scrapped our other ideas and decided to make a Go game.
+We started to plan the making of a thorough design before starting with the actual coding.
+
+
+17 February 2016
+----------------
+About 4 hours.
+Today We worked on the design of the project and we got a small tutorial on how to use github.
+
+
+18 February 2016
+----------------
+2.5 hours.
+We continued to work on the design to get it finished. We decided to divide the coding of the project into two parts.
+The first part would be about the game board and pieces(stones) with the basic rules of the game, and the second part 
+would be about the more advanced rules of the game.
+
+
+19 February 2016
+----------------
+About 2.5 hours.
+Today we had a meeting with our supervisor were we discussed on how to make our board. We decided to make a list of 
+lists and started working on creating our board.
+
+
+22 February 2016
+----------------
+3.5 hours.
+We had a short meeting with Henrik today were he helped us fix the function to create our board. After the meeting we
+continued with the code for our board functions.
+
+
+23 February 2016
+----------------
+3.5 hours.
+Today we got the function with the purpose of finding out if a spot on the board is empty or has a stone on it to work. We 
+continued to work on different functions trying to figure out how to replace an element in a list of lists.
+
+
+24 February 2016
+----------------
+3.5 hours.
+Today we continued tweaking on the functions to replace elements in lists. It works great just replacing an element in a 
+single list but it gets tricky when we want to use the funcion in a list of lists.
+
+
+25 February 2016
+----------------
+2.5 hours.
+We tried make the element replacing function to work but we got stuck so we asked our supervisor for some help
+and we finally got it to work.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
