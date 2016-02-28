@@ -94,3 +94,13 @@ What did i do: I tried to write replaceList, we summoned our supervisor who help
 When: 25/2-16
 How long: 12:00-15:20 in foobar, 17:20-18:00
 What did i do: I was working alone for 1,5h and thought i fixed replaceCell but it was wrong and got stuck. Later we summoned our supervisor who helped us and now on the train i fixed the function!!
+Note: Joel and Eda also fixed replaceCell when i left, i just pushed mine to our repository.
+
+-------------------------------------------------------------------
+
+when: 26/2-16
+How long: 13:05-17:20ish
+What did i do: We looked at Nim.hs to get some inspiration and an understanding of how it works. Also read the slides 27-29 to understand IO more. I took the readMove function from Nim.hs and i tried to do a playStone function.
+Saved my version as placeStone.hs.
+
+------------------------------------------------------------------
