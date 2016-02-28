@@ -33,9 +33,9 @@ when (continue == "yes") $ do main
 --}
 
 
--- initialBoard makes a nxn board (n lists with n elements each within a list)
-initialBoard :: Int -> Cell -> Playfield
-initialBoard n cell = replicate n (replicate n cell) -- blir bara en lång rad (inte kolumner å rader)
+-- startBoard makes a nxn board (n lists with n elements each within a list) -- Ändra namn från initialBoard till startBoard (28/2)
+startBoard :: Int -> Cell -> Playfield
+startBoard n cell = return (replicate n (replicate n cell)) -- blir bara en lång rad (inte kolumner å rader)
 
 -- Opposite of Stone and Empty
 oppositeCell :: Cell -> Cell
@@ -73,12 +73,9 @@ playStone board (xlist,yelem) c =
 
 
 -- replaceCell byter ut ett element på Pos 
-<<<<<<< HEAD
 -- replaceCell :: [a] -> Pos -> a -> [a] -- Playfield -> Pos -> Cell -> Playfield
 -- PRE: får inte vara en stone där sen tidigare.
-=======
 --replaceCell :: [a] -> Pos -> a -> [a]
->>>>>>> 32dd7ceba83c23f3810ca20c2d8b4383cca1e487
 replaceCell board (xlist,yelem) c  = replaceCell' board xlist (replaceCell' (board!!xlist) yelem c)
 
 -- replaceCell' (auxiliary funktion) gör allt jobb åt replaceCell
