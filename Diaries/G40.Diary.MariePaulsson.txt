@@ -106,5 +106,6 @@ Saved my version as placeStone.hs.
 ------------------------------------------------------------------
 
 When: 28/2-16
-How long: 01:20-03:06 at Jeppes
-What did i do: I started writing in our documentation. I did the first page and wrote about Go under Introduction.
+How long: 01:20-03:06 & 10:30-11:50 at Jeppes, 14:05-15:00 på pendeln, 15:50- ongoing
+What did i do: I started writing in our documentation. I did the first page and wrote about Go under Introduction. When I woke up I i made some changes in placeStone.hs and tried to make a working placeStone function.
+At the train i made the function placeStone work. Working at Joels place with Joel on placeStone.hs.
