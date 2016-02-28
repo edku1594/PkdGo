@@ -27,6 +27,8 @@ Continuing on the replacing functions, we unfortunently couldn't finish them tod
 25/02-15
 In the end of the day we finally fixed the replace functions and can now carry on with the second part of the design, which is the actual game itself.
 
+26/02-15
+Today we started to "set up" our game and got a little inspiration from the nim game, just to get an idea on how to make a game in Haskell. This will be our focus for the following days. 
 
 
  
