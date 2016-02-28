@@ -123,7 +123,7 @@ main = do
         gameState <- (startBoard size Empty)
         play gameState
     else do
-        putStrLn "Invalid size. Give a new one." -- WHY WON'T YOU ACCEPT MEEEEE?
+        putStrLn "Invalid size. Give a new one."
         main
     
 
