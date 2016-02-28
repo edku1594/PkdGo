@@ -61,7 +61,25 @@ Marie Paulsson, Eda Kurdoglu and Joel Ramstedt
 
 
 Introduction
-Go is a 2500 year old board game originated from ancient China that is currently being played around the world, mostly in East Asia. It is an abstract strategy game where strategy, tactics and observations are required. There are two players who alternately place black and white stones on an unoccupied intersection (”point”) of a board with a 19x19 grid of lines. Players who are beginners or less experienced often play on smaller 9x9 and 13x13 boards. The stones can not be moved once placed but can be removed if captured. A stone or a group of stones are captured when they are surrounded by the opponent's stones, when there are no neighboring points (”liberties”) left. The goal is to have surrounded a larger total area of the board than the opponent with one's stone by the end of the game. (https://en.wikipedia.org/wiki/Go_%28game%29 28/2-16 03:05)
+Go is a 2500 year old board game originated from ancient China that 
+is currently being played around the world, mostly in East Asia. 
+It is an abstract strategy game where strategy, tactics and 
+observations are required. There are two players who alternately 
+place black and white stones on an unoccupied intersection (”point”) 
+of a board with a 19x19 grid of lines. Players who are beginners or 
+less experienced often play on smaller 9x9 and 13x13 boards. The stones 
+can not be moved once placed but can be removed if captured. A stone 
+or a group of stones are captured when they are surrounded by the 
+opponent's stones, when there are no neighboring points (”liberties”)
+left. The goal is to have surrounded a larger total area of the board
+than the opponent with one's stone by the end of the game. (https://en.wikipedia.org/wiki/Go_%28game%29 28/2-16 03:05)
+
+Att nämna:
+computer go <- ganska relevant och nytt
+Vad som intresserade en etc.
+
+
+
 
 Regler att kanske nämna (som kanske skulle vara för svåra att koda):
 under the stones (ishi no shiita)
