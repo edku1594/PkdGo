@@ -30,8 +30,11 @@ when (continue == "yes") $ do main
 
 
 -- startBoard makes a nxn board (n lists with n elements each within a list) -- Ändra namn från initialBoard till startBoard (28/2)
-startBoard :: Int -> Cell -> Playfield
+startBoard :: Int -> Cell -> IO Playfield
 startBoard n cell = return (replicate n (replicate n cell)) -- blir bara en lång rad (inte kolumner å rader)
+
+victory :: Int -> Cell -> Playfield
+victory = undefined
 
 -- Opposite of Stone and Empty
 oppositeCell :: Cell -> Cell
@@ -63,10 +66,10 @@ replaceCell board (xlist,yelem) c  = replaceCell' board xlist (replaceCell' (boa
 
 -- replaceCell' (auxiliary funktion) gör allt jobb åt replaceCell
 replaceCell' :: [a] -> Int -> a -> [a]
-replaceCell' board i c = 
-    if and [i >= 0, i < length board]		--isEmpty måste vara med!
-    then take i board ++ (c: (drop (i+1) board))
-    else board
+replaceCell' board i c = take i board ++ (c: (drop (i+1) board))
+    --if and [i >= 0, i < length board]		--isEmpty måste vara med!
+    --then take i board ++ (c: (drop (i+1) board))
+    --else board 
 
 -- kopierat från Nim.hs
 -- getLine sen använda read för att få fram rätt typ.
@@ -76,7 +79,7 @@ readMove = do
         line <- getLine 
         evaluate (read line))  -- evaluate required to force conversion of line to Move
         ((\_ -> do   -- exception handler
-            putStrLn "Invalid input. Correct format: (x,y)"
+            putStrLn "Invalid input. Correct format: (x,y). Give a new one."
             readMove) :: SomeException -> IO Pos)
 
 
@@ -86,44 +89,51 @@ readSize = do
         line <- getLine 
         evaluate (read line))  -- evaluate required to force conversion of line to Move
         ((\_ -> do   -- exception handler
-            putStrLn "Invalid input. Correct format: Int"
+            putStrLn "Invalid input. Correct format: Int. Give a new one"
             readSize) :: SomeException -> IO Int)
-	
--- inspiration från Nim.hs
-placeStone :: Playfield -> IO Playfield
-placeStone game = do
-    putStrLn "Your move."
-    move <- readMove
-    if isEmpty game move == True
-    then do
-		--putStrLn "Sure you wanna place stone there? yes or no"
-		--yes <- getLine
-		--when (yes=="yes") $ do
-		-- putStrLn "You put your stone at" ++
-        return (replaceCell game move (Stone))
-		
-		--unless (yes=="no") $ do 		-- Kanske inte behövs?
-		--	putStrLn "Make another move"
-		--	placeStone board (xlist,yelem)
-    else do
-		--putStrLn "You can't place at" ++ move ++ ". There's a"  ++ ( show (getCell board move)) ++ "there."
-        putStrLn "Invalid move, make another one."
-        placeStone game
 
 -- inspiration från Nim.hs
-main :: IO ()
+placeStone :: Playfield -> IO Playfield
+placeStone gameState = do
+    putStrLn "Your move."
+    move <- readMove
+    if isEmpty gameState move == True
+    then do
+    --putStrLn "Sure you wanna place stone there? yes or no"
+    --yes <- getLine
+    --when (yes=="yes") $ do
+    -- putStrLn "You put your stone at" ++
+        return (replaceCell gameState move (Stone))
+        --unless (yes=="no") $ do                 -- Kanske inte behövs?
+        --	putStrLn "Make another move"
+        --	placeStone board (xlist,yelem)
+    else do
+        --putStrLn "You can't place at" ++ move ++ ". There's a"  ++ ( show (getCell board move)) ++ "there."
+        putStrLn "Invalid move, make another one."
+        placeStone gameState
+
+-- inspiration från Nim.hs
+-- PRE: Pos måste vara pos>=0 && pos<length board
+main :: IO Playfield
 main = do 
-    putStrLn "Welcome to Go."
-    putStrLn "Which size would you like your board to be? 2-19"
-    size <- getLine
-    game <- (startBoard size Empty)
-	return game
-		
-play game = do
-	putStrLn "hello"
-	newGame <- placeStone game
-  
-  {- if victory newGame then do
+    putStrLn "Welcome to Go. Enter a size between 2-19"
+    size <- readSize
+    if and [size > 1, size < 20]
+    then do
+        gameState <- (startBoard size Empty)
+        play gameState
+    else do
+        putStrLn "Invalid size. Give a new one." -- WHY WON'T YOU ACCEPT MEEEEE?
+        main
+    
+
+play :: Playfield -> IO Playfield
+play gameState = do
+    -- putStrLn "hello"
+    newGame <- placeStone gameState
+    return newGame
+
+{- if victory newGame then do
     putStrLn "Player won!"
     putStrLn ""
     putStrLn "Play again? yes / no"
@@ -151,14 +161,11 @@ play game = do
    Post: A valid game state
    Side effect: None (at present)
 -}
-		
-		
 
 {- ******************** Test cases ***************
 test1 = TestCase (assertEqual "for (foo 3)," (1,2) (foo 3))
 
--}	
-
+-}
 -----type Player = String
 
 -- readMove :: IO Move -- reads input from player (?)
