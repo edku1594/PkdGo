@@ -107,4 +107,4 @@ Saved my version as placeStone.hs.
 
 When: 28/2-16
 How long: 01:20-03:06 at Jeppes
-What did i do: I started writing in our documentation. I did the first page and wrote 9 lines about Go under Introduction.
+What did i do: I started writing in our documentation. I did the first page and wrote about Go under Introduction.
