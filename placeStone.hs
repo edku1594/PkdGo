@@ -35,9 +35,9 @@ when (continue == "yes") $ do main
 --}
 
 
--- initialBoard makes a nxn board (n lists with n elements each within a list)
-initialBoard :: Int -> Cell -> IO Playfield
-initialBoard n cell = replicate n (replicate n cell) -- blir bara en lång rad (inte kolumner å rader)
+-- startBoard makes a nxn board (n lists with n elements each within a list) -- Ändra namn från initialBoard till startBoard (28/2)
+startBoard :: Int -> Cell -> IO Playfield
+startBoard n cell = return (replicate n (replicate n cell)) -- blir bara en lång rad (inte kolumner å rader)
 
 -- Opposite of Stone and Empty
 oppositeCell :: Cell -> Cell
@@ -84,24 +84,26 @@ readMove = do
        putStrLn "Invalid input. Correct format: (pileNumber,amount)"
        readMove) :: SomeException -> IO Pos)
 	
-{- inspiration från Nim.hs
-placeStone :: Playfield -> Pos -> Cell -> IO Playfield
-placeStone board (xlist, yelem) c = do
+-- inspiration från Nim.hs
+placeStone :: Playfield -> IO Playfield
+placeStone game = do
 	putStrLn "Your move."
 	move <- readMove
-	if isEmpty board move
+	if isEmpty game move == True
 	then do
-		putStrLn "Do you wanna place stone at" ++ (show move) ++ "?"
-		yes <- getLine
-		when (yes=="yes") $ do (replaceCell board move c)
-		unless (yes=="yes") $ do 		-- Kanske inte behövs?
-			putStrLn "Make another move"
-			playStone board (xlist,yelem) c
+		--putStrLn "Sure you wanna place stone there? yes or no"
+		--yes <- getLine
+		--when (yes=="yes") $ do
+		-- putStrLn "You put your stone at" ++
+		return (replaceCell game move (Stone))
 		
-		
-		replaceCell
-
--}		
+		--unless (yes=="no") $ do 		-- Kanske inte behövs?
+		--	putStrLn "Make another move"
+		--	placeStone board (xlist,yelem)
+	else do
+		--putStrLn "You can't place at" ++ move ++ ". There's a"  ++ ( show (getCell board move)) ++ "there."
+		putStrLn "Invalid move, make another one."
+		placeStone game
 		
 
 {- ******************** Test cases ***************
