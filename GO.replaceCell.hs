@@ -45,13 +45,16 @@ oppositeCell Empty = Stone
 
 -- kollar om cellen är Empty
 isEmpty :: Playfield -> Pos -> Bool
-isEmpty board (kolumn,rad) = if (getCell board (kolumn,rad)) == Empty then True else False 
+isEmpty board (kolumn,rad) = 
+	if (getCell board (kolumn,rad)) == Empty 
+	then True 
+	else False 
 -- Ex: isEmpty [[Empty,Empty],[Stone,Empty]] (1,0) -> False
 --	   isEmpty [[Empty,Empty],[Stone,Empty]] (1,1) -> True
 
 -- tar fram vad som finns i den positionen
 getCell :: Playfield -> Pos -> Cell
-getCell board (kolumn,rad) = board!!kolumn!!rad -- (kolumn = vilken lista, rad = n:te elementet i listan)
+getCell board (xlist,yelem) = board!!xlist!!yelem
 -- Ex: getCell [[Empty,Empty],[Empty,Empty],[Stone, Empty]] (2,1) -> Empty
 --     getCell [[Empty,Empty],[Empty,Empty],[Stone, Empty]] (2,0) -> Stone
 
@@ -61,7 +64,8 @@ getCell board (kolumn,rad) = board!!kolumn!!rad -- (kolumn = vilken lista, rad =
 -- playStone board (kolumn,rad) sten = if getCell board (kolumn,rad) == Empty then (replaceCell board (kolumn,rad) sten) else board
 
 -- replaceCell byter ut ett element på Pos 
--- replaceCell :: [a] -> Pos -> a -> [a]
+-- replaceCell :: [a] -> Pos -> a -> [a] -- Playfield -> Pos -> Cell -> Playfield
+-- PRE: får inte vara en stone där sen tidigare.
 replaceCell board (xlist,yelem) c  = replaceCell' board xlist (replaceCell' (board!!xlist) yelem c)
 
 -- replaceCell' (auxiliary funktion) gör allt jobb åt replaceCell
