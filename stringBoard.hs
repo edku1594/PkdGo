@@ -9,8 +9,8 @@ import Debug.Trace -- ska hjälpa med debugging
 import Data.Array
 import Data.List -- concat en annan funktion än den som finns i vanliga bibliotek
 
-import Graphics.Gloss
-import Graphics.Gloss.Data.ViewPort
+--import Graphics.Gloss
+--import Graphics.Gloss.Data.ViewPort
 
 --LANGUAGE TypeSynonymInstances
 --LANGUAGE FlexibleInstances
