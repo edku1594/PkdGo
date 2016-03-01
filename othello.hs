@@ -2,7 +2,7 @@ import Control.Exception
 import Prelude hiding(catch)
 import Control.Monad -- för att använda IO
 import Test.HUnit -- test framework
-
+import Prelude hiding (Leftt, Rightt)
 --import Data.Maybe -- fromJust $ elemIndex 3 [1,2,3,4] -> 2
 
 import Data.Array
@@ -126,38 +126,41 @@ getPosition board color = foldl (++) [] [[(x,y) | y <- [0..7], getCell board (x,
 --getOppNeigh board pos color = foldl (++) [] [[ppos] | ppos <- (getListNeigh pos), (getCell board ppos) == (oppositeColor color)]
 --getOppNeigh board color = foldl (++) [] [[ii] | ii <- (getListNeigh i), (getCell board ii) == (oppositeColor color) | i <- (getPosition board color)]
 
+getSurrStones :: [Pos] -> [[(Pos,Direction)]]
+getSurrStones = undefined
 
-getN1 [(xlist,yelem)] = [((xlist -1), yelem)] 
-getN2 [(xlist,yelem)] = [((xlist -1), (yelem-1))] 
-getN3 [(xlist,yelem)] = [(xlist, (yelem-1))] 
-getN4 [(xlist,yelem)] = [((xlist+1), (yelem-1))] 
-getN5 [(xlist,yelem)] = [((xlist+1), yelem)] 
-getN6 [(xlist,yelem)] = [((xlist+1), (yelem+1))] 
-getN7 [(xlist,yelem)] = [(xlist, (yelem+1))] 
-getN8 [(xlist,yelem)] = [((xlist -1), (yelem+1))] 
+
+
+
+getN1 [(xlist,yelem)] = [(((xlist -1), yelem),Leftt)] 
+getN2 [(xlist,yelem)] = [(((xlist -1), (yelem-1)), UpperLeft)] 
+getN3 [(xlist,yelem)] = [((xlist, (yelem-1)), Up)] 
+getN4 [(xlist,yelem)] = [(((xlist+1), (yelem-1)), UpperRight)] 
+getN5 [(xlist,yelem)] = [(((xlist +1), yelem),Rightt)] 
+getN6 [(xlist,yelem)] = [(((xlist+1), (yelem+1)), LowerRight)] 
+getN7 [(xlist,yelem)] = [(((xlist), (yelem+1)), Down)] 
+getN8 [(xlist,yelem)] = [(((xlist -1), (yelem+1)), LowerLeft)] 
 
 --getListNeigh :: 
 getListNeigh pos = (getN1 pos) ++ (getN2 pos) ++ (getN3 pos) ++ (getN4 pos) ++ (getN5 pos) ++ (getN6 pos) ++ (getN7 pos) ++ (getN8 pos)
 
+if nånting == (_,_, Leftt) then   
+
+
 
 --getDirection :: 
-getDirection1 [(xlist,yelem)] = if getN1 [(xlist,yelem)] == [((xlist -1), yelem)] then Leftt else oppositeDirection Leftt
-getDirection2 [(xlist,yelem)] = if getN2 [(xlist,yelem)] == [((xlist -1), (yelem-1))] then UpperLeft else oppositeDirection UpperLeft
-getDirection3 [(xlist,yelem)] = if getN3 [(xlist,yelem)] == [((xlist), (yelem-1))] then Up else oppositeDirection Up
-getDirection4 [(xlist,yelem)] = if getN4 [(xlist,yelem)] == [((xlist +1), (yelem-1))] then UpperRight else oppositeDirection UpperRight
-getDirection5 [(xlist,yelem)] = if getN5 [(xlist,yelem)] == [((xlist +1), yelem)] then Rightt else oppositeDirection Rightt
-getDirection6 [(xlist,yelem)] = if getN6 [(xlist,yelem)] == [((xlist +1), (yelem+1))] then LowerRight else oppositeDirection LowerRight
-getDirection7 [(xlist,yelem)] = if getN7 [(xlist,yelem)] == [(xlist, (yelem+1))] then Down else oppositeDirection Down
-getDirection8 [(xlist,yelem)] = if getN8 [(xlist,yelem)] == [((xlist -1), (yelem+1))] then LowerLeft else oppositeDirection LowerLeft
+--getDirection1 [(xlist,yelem)] = if getN1 [(xlist,yelem)] == [((xlist -1), yelem)] then [Leftt] else  [Rightt]
+--getDirection2 [(xlist,yelem)] = if getN2 [(xlist,yelem)] == [((xlist -1), (yelem-1))] then [UpperLeft] else [LowerRight]
+--getDirection3 [(xlist,yelem)] = if getN3 [(xlist,yelem)] == [((xlist), (yelem-1))] then [Up] else  [Down]
+--getDirection4 [(xlist,yelem)] = if getN4 [(xlist,yelem)] == [((xlist +1), (yelem-1))] then [UpperRight] else  [LowerLeft]
+--getDirection5 [(xlist,yelem)] = if getN5 [(xlist,yelem)] == [((xlist +1), yelem)] then [Rightt] else  [Leftt]
+--getDirection6 [(xlist,yelem)] = if getN6 [(xlist,yelem)] == [((xlist +1), (yelem+1))] then [LowerRight] else  [UpperLeft]
+--getDirection7 [(xlist,yelem)] = if getN7 [(xlist,yelem)] == [(xlist, (yelem+1))] then [Down] else  [Up]
+--getDirection8 [(xlist,yelem)] = if getN8 [(xlist,yelem)] == [((xlist -1), (yelem+1))] then [LowerLeft] else  [UpperRight]
 
-getListDirection pos [] =  (getDirection1 pos) ++ (getDirection2 pos) 
+--getListDirection pos=  (getDirection1 pos) ++ (getDirection2 pos) ++ (getDirection3 pos) ++ (getDirection4 pos) ++ (getDirection5 pos) ++ (getDirection6 pos) ++ (getDirection7 pos) ++ (getDirection8 pos)
 
- --getN3 [(xlist,yelem)] == [((xlist -1), yelem)] then Leftt else Rightt
- --if getN4 [(xlist,yelem)] == [((xlist -1), yelem)] then Leftt else Rightt
- --if getN5 [(xlist,yelem)] == [((xlist -1), yelem)] then Leftt else Rightt
- --if getN6 [(xlist,yelem)] == [((xlist -1), yelem)] then Leftt else Rightt
- --if getN7 [(xlist,yelem)] == [((xlist -1), yelem)] then Leftt else Rightt
- --if getN8 [(xlist,yelem)] == [((xlist -1), yelem)] then Leftt else Rightt
+
 
 --getIndex :: [Pos] -> Int
 --getIndex gLN = foldl (++) [] [gLN!!n | n <- [0..7]]
@@ -175,10 +178,6 @@ oppositeDirection LowerLeft = UpperRight
 --if pos == getN 
 
 
---translatePos :: (Pos) -> String
---translatePos (getN pos) = "Left"
---translatePos (getN2 pos) = "Left Upper Corner"
-
 --[((xlist -1), (yelem-1))] 
 
 --, (xlist, (yelem-1)), ((xlist +1),(yelem-1)), ((xlist +1), yelem), ((xlist +1)(yelem+1)), (xlist, (yelem+1)), ((xlist -1), (yelem+1))]
@@ -187,6 +186,27 @@ oppositeDirection LowerLeft = UpperRight
 
     --if getCell board((xlist -1), yelem) == oppositeColor 
         --then foldl (++) [] 
+
+ 
+getDirr (x:xs) = zip x [Leftt, UpperLeft,Up,UpperRight,Rightt,LowerRight,Down,LowerLeft]
+
+
+
+--getDirectionPos a = 
+      --let
+
+--global=9
+
+--getDirectionPos :: [Pos] -> [Direction]
+--getDirectionPos ((xlist,yelem):xs) =  
+    --  let
+    -- Leftt = [((xlist -1), yelem)] 
+    --in
+    --   getN1 [(xlist,yelem)]
+          
+       
+
+--goOppDirection pos = 
 
 
 
