@@ -39,6 +39,36 @@ colorToAscii color =
         Empty -> '-'
 -}
 
+
+makeString :: Cell -> String
+makeString Empty = "_"
+makeString White = "White"
+makeString Black = "Black"
+
+makeCell :: String -> Cell
+makeCell "_" = Empty
+makeCell "White" = White
+makeCell "Black" = Black
+
+printToBoard :: Cell -> IO()
+printToBoard a = do putChar '|'
+                    putStrLn (makeString a)
+
+makeLineBoard :: [Cell] -> String
+makeLineBoard [] = []
+makeLineBoard (x:xs) = "|" ++ show x ++ makeLineBoard xs
+--putStr "|\n"
+
+stringBoard :: [[Cell]] -> String
+stringBoard b = "|\n" ++ stringBoard' b
+
+stringBoard' :: [[Cell]] -> String
+stringBoard' [] = []
+stringBoard' (x:xs) = makeLineBoard x ++ "|\n" ++ stringBoard' xs
+
+
+
+
 -- emptyBoard makes a 8x8 board (8 lists with 8 elements each within a list)
 emptyBoard :: Playfield
 emptyBoard = replicate 8 (replicate 8 Empty) -- blir bara en lång rad (inte kolumner å rader)
@@ -111,7 +141,7 @@ replaceCell' board i c =
 
 -- Takes out all the given color's position.
 getPosition :: Playfield -> Cell -> [Pos]
-getPosition board color = foldl (++) [] [[(x,y) | y <- [0..7], getCell board (x,y) == oppositeColor color] | x <- [0..7]]
+getPosition board color = foldl (++) [] [[(x,y) | y <- [0..7], getCell board (x,y) == color] | x <- [0..7]]
 
 -- Är det svart runt omkring den vita ?
 --possibleColor :: [Pos] -> Playfield -> color [Pos]
@@ -126,25 +156,31 @@ getPosition board color = foldl (++) [] [[(x,y) | y <- [0..7], getCell board (x,
 --getOppNeigh board pos color = foldl (++) [] [[ppos] | ppos <- (getListNeigh pos), (getCell board ppos) == (oppositeColor color)]
 --getOppNeigh board color = foldl (++) [] [[ii] | ii <- (getListNeigh i), (getCell board ii) == (oppositeColor color) | i <- (getPosition board color)]
 
-getSurrStones :: [Pos] -> [[(Pos,Direction)]]
-getSurrStones = undefined
+
+getSurrStones :: Pos -> [(Pos,Direction)]
+getSurrStones (x,y) = 
+    let
+        (xN,xP)=(x-1,x+1)
+        (yN,yP)=(y-1,y+1)
+    in
+        zip 
+            [(xN,y),(xN,yN),(x,yN),(xP,yN),(xP,y),(xP,yP),(x,yP),(xN,yP)] 
+            [Leftt,UpperLeft,Up,UpperRight,Rightt,LowerRight,Down,LowerLeft]
 
 
 
 
-getN1 [(xlist,yelem)] = [(((xlist -1), yelem),Leftt)] 
-getN2 [(xlist,yelem)] = [(((xlist -1), (yelem-1)), UpperLeft)] 
-getN3 [(xlist,yelem)] = [((xlist, (yelem-1)), Up)] 
-getN4 [(xlist,yelem)] = [(((xlist+1), (yelem-1)), UpperRight)] 
-getN5 [(xlist,yelem)] = [(((xlist +1), yelem),Rightt)] 
-getN6 [(xlist,yelem)] = [(((xlist+1), (yelem+1)), LowerRight)] 
-getN7 [(xlist,yelem)] = [(((xlist), (yelem+1)), Down)] 
-getN8 [(xlist,yelem)] = [(((xlist -1), (yelem+1)), LowerLeft)] 
 
---getListNeigh :: 
-getListNeigh pos = (getN1 pos) ++ (getN2 pos) ++ (getN3 pos) ++ (getN4 pos) ++ (getN5 pos) ++ (getN6 pos) ++ (getN7 pos) ++ (getN8 pos)
+--Black -> [Pos] -> Pos -> neighbours -> [white pos] ->  white pos -> direction -> empty, vägg, Black
 
-if nånting == (_,_, Leftt) then   
+
+
+goDirection :: [(Pos, Direction)] -> Bool
+goDirection xs = undefined
+
+
+
+    --if (x:(getListNeigh pos) == (_, Leftt) then True else goDirection 
 
 
 
