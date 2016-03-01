@@ -94,3 +94,27 @@ What did i do: I tried to write replaceList, we summoned our supervisor who help
 When: 25/2-16
 How long: 12:00-15:20 in foobar, 17:20-18:00
 What did i do: I was working alone for 1,5h and thought i fixed replaceCell but it was wrong and got stuck. Later we summoned our supervisor who helped us and now on the train i fixed the function!!
+Note: Joel and Eda also fixed replaceCell when i left, i just pushed mine to our repository.
+
+-------------------------------------------------------------------
+
+when: 26/2-16
+How long: 13:05-17:20ish
+What did i do: We looked at Nim.hs to get some inspiration and an understanding of how it works. Also read the slides 27-29 to understand IO more. I took the readMove function from Nim.hs and i tried to do a playStone function.
+Saved my version as placeStone.hs.
+
+------------------------------------------------------------------
+
+When: 28/2-16
+How long: 01:20-03:06 & 10:30-11:50 at Jeppes, 14:05-15:00 på pendeln, 15:50-18:00 at Joels, 21:40-01:00 the next day at home
+What did i do: I started writing in our documentation. I did the first page and wrote about Go under Introduction. When I woke up I made some changes in placeStone.hs and tried to make a working placeStone function.
+At the train i made the function placeStone work.
+Working at Joels place with Joel on placeStone.hs. Made a new file called Game.hs with new working functions main and play (I did all the coding on my laptop, Joels broke the otherday).
+Once at home I made playerOne/Two functions and the play function to loop non-stop if you don't put a too high or low index. I figured the error occurs in the getCell function saying that the index is too large or negative, don't really know how to
+fix it yet. Even made some name changes on some functions (like placeStone are now playerOne and playerTwo). Saved the file as GameLoop.hs.
+
+------------------------------------------------------------------
+
+When: 29/2-16
+How long:
+What did i do:

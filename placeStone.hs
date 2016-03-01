@@ -4,7 +4,7 @@ import Control.Monad
 import Test.HUnit -- test framework
 
 import Data.Array
-import Data.List
+import Data.List -- concat en annan funktion än den som finns i vanliga bibliotek
 
 -----------------------------------------------------
 -- Ex.1
@@ -13,19 +13,21 @@ data Stone = Black | White deriving (Eq, Show)
 data Cell = Empty | Stone deriving (Eq, Show)
 data Player = A | B
 
-type Playfield = [[Cell]] 
+type Playfield = [[Cell]]
 type Pos = (Int,Int)
 
 -- instance Show Stone where     
 -- show Black = "X"					( Inget att tänka på nu )
 -- show White = "O"
+-- instance Show Cell where
+-- show Empty = "-"
 
-{--
+{-- inspiration från Nim.hs
 main :: IO ()
 main = do 
-  putStrLn "Welcome to Go."					( Från Nim.hs )
-  gameState <- genGameState 
-  play gameState
+	putStrLn "Welcome to Go."
+	playfield <- initialBoard
+	play playfield
   
 putStrLn "Play again? yes / no"
 continue <- getLine
@@ -34,7 +36,7 @@ when (continue == "yes") $ do main
 
 
 -- startBoard makes a nxn board (n lists with n elements each within a list) -- Ändra namn från initialBoard till startBoard (28/2)
-startBoard :: Int -> Cell -> Playfield
+startBoard :: Int -> Cell -> IO Playfield
 startBoard n cell = return (replicate n (replicate n cell)) -- blir bara en lång rad (inte kolumner å rader)
 
 -- Opposite of Stone and Empty
@@ -45,52 +47,69 @@ oppositeCell Empty = Stone
 
 -- kollar om cellen är Empty
 isEmpty :: Playfield -> Pos -> Bool
-isEmpty board (kolumn,rad) = 
-	if (getCell board (kolumn,rad)) == Empty 
+isEmpty board (xlist,yelem) = 
+	if (getCell board (xlist,yelem)) == Empty 
 	then True 
 	else False 
 -- Ex: isEmpty [[Empty,Empty],[Stone,Empty]] (1,0) -> False
 --	   isEmpty [[Empty,Empty],[Stone,Empty]] (1,1) -> True
 
 -- tar fram vad som finns i den positionen
-getCell :: Playfield -> Pos -> Cell
-getCell board (xlist,yelem) = board!!xlist!!yelem
+--getCell :: Playfield -> Pos -> Cell
+getCell board (xlist,yelem) = board!!xlist!!yelem -- (kolumn = vilken lista, rad = n:te elementet i listan)
 -- Ex: getCell [[Empty,Empty],[Empty,Empty],[Stone, Empty]] (2,1) -> Empty
 --     getCell [[Empty,Empty],[Empty,Empty],[Stone, Empty]] (2,0) -> Stone
 
 
--- playStone ska sätta ut en sten (ändrar Empty till Stone på den pos)
-playStone :: Playfield -> Pos -> Cell -> IO Playfield
-playStone board (xlist,yelem) c = 
-		if isEmpty board (xlist,yelem) == True then do
-			putStrLn "Do you want make this move yes/no?" 
-			yes<-getLine 
-			if (yes=="yes") then replaceCell board (xlist,yelem) c else do putStrLn "make another move" 
-			playStone board (xlist,yelem) c 
-		else do
-			putStrLn "Stone. Invalid Move" 
-			playStone board (xlist,yelem) c
-
-
--- replaceCell byter ut ett element på Pos 
--- replaceCell :: [a] -> Pos -> a -> [a] -- Playfield -> Pos -> Cell -> Playfield
+-- replaceCell byter ut ett element på Pos
 -- PRE: får inte vara en stone där sen tidigare.
---replaceCell :: [a] -> Pos -> a -> [a]
+replaceCell :: [[Cell]] -> Pos -> Cell -> [[Cell]]
 replaceCell board (xlist,yelem) c  = replaceCell' board xlist (replaceCell' (board!!xlist) yelem c)
 
 -- replaceCell' (auxiliary funktion) gör allt jobb åt replaceCell
 replaceCell' :: [a] -> Int -> a -> [a]
 replaceCell' board i c = 
-	if and [i >= 0, i < length board]		--getCell board (lista,elementet) == Empty måste vara med!
+	if and [i >= 0, i < length board]		--isEmpty måste vara med!
 	then take i board ++ (c: (drop (i+1) board))
 	else board
 
-replaceEl :: [a] -> Int -> a -> [a]
-replaceEl xs i x = (take i xs) ++ (x : (drop (i+1) xs))
+-- kopierat från Nim.hs
+-- getLine sen använda read för att få fram rätt typ.
+readMove :: IO Pos
+readMove = do
+  catch (do
+    line <- getLine 
+    evaluate (read line))  -- evaluate required to force conversion of line to Move
+    ((\_ -> do   -- exception handler
+       putStrLn "Invalid input. Correct format: (pileNumber,amount)"
+       readMove) :: SomeException -> IO Pos)
+	
+-- inspiration från Nim.hs
+placeStone :: Playfield -> IO Playfield
+placeStone game = do
+	putStrLn "Your move."
+	move <- readMove
+	if isEmpty game move == True
+	then do
+		--putStrLn "Sure you wanna place stone there? yes or no"
+		--yes <- getLine
+		--when (yes=="yes") $ do
+		-- putStrLn "You put your stone at" ++
+		return (replaceCell game move (Stone))
+		
+		--unless (yes=="no") $ do 		-- Kanske inte behövs?
+		--	putStrLn "Make another move"
+		--	placeStone board (xlist,yelem)
+	else do
+		--putStrLn "You can't place at" ++ move ++ ". There's a"  ++ ( show (getCell board move)) ++ "there."
+		putStrLn "Invalid move, make another one."
+		placeStone game
+		
 
-replace :: [[a]] -> (Int, Int) -> a -> [[a]]
-replace xs (y, x) s = replaceEl xs y (replaceEl (xs!!y) x s)
+{- ******************** Test cases ***************
+test1 = TestCase (assertEqual "for (foo 3)," (1,2) (foo 3))
 
+-}	
 
 {- Ex.2
 type Kolumn = Int
