@@ -51,20 +51,21 @@ colorToAscii color =
 --__________________________________________________________________________________________________
 
 
-
+--gör om cell till strings
 makeString :: Cell -> String
 makeString Empty = "_"
-makeString White = "White"
-makeString Black = "Black"
+makeString White = "O"
+makeString Black = "X"
 
+--gör om strings till cell
 makeCell :: String -> Cell
 makeCell "_" = Empty
-makeCell "White" = White
-makeCell "Black" = Black
+makeCell "O" = White
+makeCell "X" = Black
 
-printToBoard :: Cell -> IO()
-printToBoard a = do putChar '|'
-                    putStrLn (makeString a)
+--printToBoard :: Cell -> IO()
+--printToBoard a = do putChar '|'
+--                    putStrLn (makeString a)
 
 
                    
@@ -73,14 +74,28 @@ makeLineBoard [] = []
 makeLineBoard (x:xs) = "|" ++ show x ++ makeLineBoard xs
 --putStr "|\n"
 
-stringBoard :: [[Cell]] -> String
-stringBoard b = "|\n" ++ stringBoard' b
+stringBoard :: Playfield -> String
+stringBoard b = "|" ++ stringBoard' b
 
-stringBoard' :: [[Cell]] -> String
+
+stringBoard' :: Playfield -> String
 stringBoard' [] = []
-stringBoard' (x:xs) = makeLineBoard x ++ "|\n" ++ stringBoard' xs
+stringBoard' (x:xs) = makeLineBoard x ++ "|" ++ stringBoard' xs
 
+{-
+makeLineBoard1 :: [Cell] -> String
+makeLineBoard1 [] = []
+makeLineBoard1 (x:xs) = "|" ++ show x ++ makeLineBoard1 xs
+--putStr "|\n"
 
+stringBoard1 :: Playfield -> IO String
+stringBoard1 b = do
+	                putStrLn "|" ++ stringBoard' b
+
+stringBoard1' :: Playfield -> String
+stringBoard1' [] = []
+stringBoard1' (x:xs) = makeLineBoard1 x ++ "|" ++ stringBoard1' xs
+-}
 
 -- emptyBoard makes a 8x8 board (8 lists with 8 elements each within a list)
 emptyBoard :: Playfield
